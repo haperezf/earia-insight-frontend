@@ -4,6 +4,7 @@ import AnalysisForm from "@/components/AnalysisForm";
 import AnalysisResults from "@/components/AnalysisResults";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { toast } from "sonner";
+import { BrainCircuit } from "lucide-react";
 
 interface FormData {
   query: string;
@@ -102,25 +103,28 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-blue-600 mb-2">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-12 px-4">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-10">
+          <div className="mb-4 inline-flex items-center justify-center p-3 bg-blue-100 rounded-full shadow-md">
+            <BrainCircuit className="h-10 w-10 text-blue-600" />
+          </div>
+          <h1 className="text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-800 mb-3">
             Interfaz del Agente EARIA
           </h1>
-          <p className="text-slate-600">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             Sistema de análisis avanzado para documentos de telecomunicaciones
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl border border-blue-100 p-6 md:p-8 mb-10 transform transition-all duration-300 hover:shadow-2xl">
           <AnalysisForm onSubmit={handleSubmit} isLoading={isLoading} />
         </div>
 
         {isLoading && <LoadingSpinner />}
 
         {showResults && (
-          <div className="mt-8 animate-fade-in">
+          <div className="mt-10 fade-in">
             <AnalysisResults
               originalQuery={resultData.originalQuery}
               agent1Result={resultData.agent1Result}
